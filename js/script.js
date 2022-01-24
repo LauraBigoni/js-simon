@@ -25,3 +25,12 @@ function getRandomNumber (min, max, list) {
     return randNumber;
 };
 
+// # Genero 5 numeri casuali in un prompt da mostrare all'utente
+const extractedNumbers = [];
+for ( let i = 0; i < 5; i++) {
+    const numbers = getRandomNumber(1,100, extractedNumbers);
+    extractedNumbers.push(numbers);
+    console.log(numbers);
+};
+
+alert(`I numeri da ricordare sono: ${extractedNumbers}`);
