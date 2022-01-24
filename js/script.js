@@ -45,8 +45,14 @@ const timer = setTimeout(function () {
         const message = parseInt(prompt('Inserisci i numeri'));
         if (message > 100 || message <= 0) {
             alert('Non puoi scrivere numeri non validi!');
-        } else userNumbers.push(message);
+        } else {
+            userNumbers.push(message);
+        }
     }
     console.log(userNumbers);
+    
+    // # il software dice quanti e quali dei numeri sono stati indovinati dall'utente
+    const guessedNumbers = extractedNumbers.filter(number => userNumbers.includes(number));
+    console.log(guessedNumbers);
 }, 3000);
 
