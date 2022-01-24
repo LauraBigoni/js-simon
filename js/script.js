@@ -44,6 +44,8 @@ const userNumbers = [];
 const timer = setTimeout(function () {
     while (userNumbers.length < 5) {
         const message = parseInt(prompt('Inserisci i numeri:'));
+
+        // # Validazione numeri
         if (message > 100 || message <= 0) {
             alert('Non puoi scrivere numeri non validi!');
         } else if (isNaN(message)) {
@@ -57,8 +59,15 @@ const timer = setTimeout(function () {
     }
     console.log(userNumbers);
 
-// # il software dice quanti e quali dei numeri sono stati indovinati dall'utente
-const guessedNumbers = userNumbers.filter(number => extractedNumbers.includes(number));
-alert(`Hai indovinato: ${guessedNumbers}`);
-console.log(`Hai indovinato: ${guessedNumbers}`);
+    // # il software dice quanti e quali dei numeri sono stati indovinati dall'utente
+    const guessedNumbers = userNumbers.filter(number => extractedNumbers.includes(number));
+    console.log(guessedNumbers);
+
+    if (guessedNumbers.length === 0) {
+        console.log('Non hai indovinato... Riprova!')
+        alert(`Non hai indovinato... Riprova!`);
+    } else {
+        console.log(`Hai indovinato: ${guessedNumbers}`);
+        alert(`Hai indovinato: ${guessedNumbers}`);
+    }
 }, 3000);
