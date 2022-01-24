@@ -38,9 +38,11 @@ alert(`I numeri da ricordare sono: ${extractedNumbers}`);
 
 
 // # all'OK della chiusura dell'alert faccio partire il CD
+const userNumbers = [];
 const timer = setTimeout(function () {
     for (let i = 0; i < 5; i++) {
         const message = prompt('Inserisci i numeri');
-        console.log(message);
+        userNumbers.push(message);
     }
-}, 30000);
+    console.log(userNumbers);
+}, 3000);
