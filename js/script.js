@@ -31,18 +31,22 @@ const extractedNumbers = [];
 for (let i = 0; i < 5; i++) {
     const numbers = getRandomNumber(1, 100, extractedNumbers);
     extractedNumbers.push(numbers);
-    console.log(numbers);
 };
+console.log(extractedNumbers);
 
 alert(`I numeri da ricordare sono: ${extractedNumbers}`);
 
 
 // # all'OK della chiusura dell'alert faccio partire il CD
 const userNumbers = [];
+
 const timer = setTimeout(function () {
-    for (let i = 0; i < 5; i++) {
-        const message = prompt('Inserisci i numeri');
-        userNumbers.push(message);
+    while (userNumbers.length < 5) {
+        const message = parseInt(prompt('Inserisci i numeri'));
+        if (message > 100 || message <= 0) {
+            alert('Non puoi scrivere numeri non validi!');
+        } else userNumbers.push(message);
     }
     console.log(userNumbers);
 }, 3000);
+
