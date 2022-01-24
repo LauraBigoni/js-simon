@@ -26,6 +26,8 @@ function getRandomNumber(min, max, list) {
 };
 
 
+alert('Dovrai indovinare 5 numeri generati in modo casuale dal computer da 1 a 100.. Tra 30 secondi dovrai dirmi i numeri memorizzati! ... Sei pronto?');
+
 // # Genero 5 numeri casuali in un prompt da mostrare all'utente
 const extractedNumbers = [];
 for (let i = 0; i < 5; i++) {
@@ -33,7 +35,6 @@ for (let i = 0; i < 5; i++) {
     extractedNumbers.push(numbers);
 };
 console.log(extractedNumbers);
-
 alert(`I numeri da ricordare sono: ${extractedNumbers}`);
 
 
@@ -42,17 +43,22 @@ const userNumbers = [];
 
 const timer = setTimeout(function () {
     while (userNumbers.length < 5) {
-        const message = parseInt(prompt('Inserisci i numeri'));
+        const message = parseInt(prompt('Inserisci i numeri:'));
         if (message > 100 || message <= 0) {
             alert('Non puoi scrivere numeri non validi!');
+        } else if (isNaN(message)) {
+            alert("Non hai inserito un numero!");
         } else {
-            userNumbers.push(message);
+            // # controllo che l'utente non abbia inserito due volte lo stesso numero
+            if (userNumbers.includes(message)) {
+                alert('Hai già inserito questo numero, provane un altro');
+            } else userNumbers.push(message);
         }
     }
     console.log(userNumbers);
-    
-    // # il software dice quanti e quali dei numeri sono stati indovinati dall'utente
-    const guessedNumbers = extractedNumbers.filter(number => userNumbers.includes(number));
-    console.log(guessedNumbers);
-}, 3000);
 
+// # il software dice quanti e quali dei numeri sono stati indovinati dall'utente
+const guessedNumbers = userNumbers.filter(number => extractedNumbers.includes(number));
+alert(`Hai indovinato: ${guessedNumbers}`);
+console.log(`Hai indovinato: ${guessedNumbers}`);
+}, 3000);
