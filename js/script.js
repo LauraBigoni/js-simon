@@ -65,4 +65,4 @@ const timer = setTimeout(function () {
     if (guessedNumbers.length === 0) {
         alert(`Non hai indovinato... Riprova!`);
     } alert(`Hai indovinato ${guessedNumbers.length} numeri: ${guessedNumbers}`);
-}, 3000);
+}, 30000);
