@@ -39,35 +39,30 @@ alert(`I numeri da ricordare sono: ${extractedNumbers}`);
 
 
 // # all'OK della chiusura dell'alert faccio partire il CD
-const userNumbers = [];
-
 const timer = setTimeout(function () {
+    const userNumbers = [];
     while (userNumbers.length < 5) {
         const message = parseInt(prompt('Inserisci i numeri:'));
 
         // # Validazione numeri
         if (message > 100 || message <= 0) {
             alert('Non puoi scrivere numeri non validi!');
+
         } else if (isNaN(message)) {
             alert("Non hai inserito un numero!");
-        } else {
+
+        } else if (userNumbers.includes(message)) {
             // # controllo che l'utente non abbia inserito due volte lo stesso numero
-            if (userNumbers.includes(message)) {
-                alert('Hai già inserito questo numero, provane un altro');
-            } else userNumbers.push(message);
-        }
+            alert('Hai già inserito questo numero, provane un altro');
+
+        } userNumbers.push(message);
     }
     console.log(userNumbers);
 
     // # il software dice quanti e quali dei numeri sono stati indovinati dall'utente
     const guessedNumbers = userNumbers.filter(number => extractedNumbers.includes(number));
-    console.log(guessedNumbers);
 
     if (guessedNumbers.length === 0) {
-        console.log('Non hai indovinato... Riprova!')
         alert(`Non hai indovinato... Riprova!`);
-    } else {
-        console.log(`Hai indovinato: ${guessedNumbers}`);
-        alert(`Hai indovinato: ${guessedNumbers}`);
-    }
+    } alert(`Hai indovinato ${guessedNumbers.length} numeri: ${guessedNumbers}`);
 }, 3000);
